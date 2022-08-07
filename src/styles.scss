@@ -1,0 +1,14 @@
+@import "~normalize.css";
+
+@import "~@angular/material/theming";
+$custom-typography: mat-typography-config(
+  $font-family: Lato,
+);
+
+@include angular-material-typography($custom-typography);
+
+html {
+  background-image: linear-gradient(to top, #cfd9df 180%, #e2ebf0 100%);
+  overflow-x: hidden;
+  font-family: "Lato", sans-serif;
+}

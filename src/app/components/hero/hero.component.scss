@@ -1,0 +1,19 @@
+.mat-card {
+  margin-right: auto;
+  margin-left: auto;
+  padding: 1.5rem;
+  width: fit-content;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 4rem;
+  text-align: center;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+}
