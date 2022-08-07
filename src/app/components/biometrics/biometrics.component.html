@@ -1,0 +1,41 @@
+<section class="container">
+  <mat-card>
+    <h2>Enter your biometric data:</h2>
+    <form class="form-container">
+      <div class="field-container">
+        <mat-form-field
+          class="example-full-width"
+          appearance="fill"
+          color="accent"
+        >
+          <mat-label>Enter Your Age (yrs)</mat-label>
+          <input matInput placeholder="Ex. 25" />
+        </mat-form-field>
+        <mat-form-field
+          class="example-full-width"
+          appearance="fill"
+          color="accent"
+        >
+          <mat-label>Enter Your Weight (kg)</mat-label>
+          <input matInput placeholder="Ex. 70" />
+        </mat-form-field>
+        <mat-form-field
+          class="example-full-width"
+          appearance="fill"
+          color="accent"
+        >
+          <mat-label>Enter Your Height (cm)</mat-label>
+          <input matInput placeholder="Ex. 180" />
+        </mat-form-field>
+      </div>
+      <button
+        mat-raised-button
+        type="button"
+        color="accent"
+        (click)="onSubmit()"
+      >
+        Calculate BMR
+      </button>
+    </form>
+  </mat-card>
+</section>
