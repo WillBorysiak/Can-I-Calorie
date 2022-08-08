@@ -1,18 +1,16 @@
 <div class="grid-container">
-  <mat-grid-list cols="2" rowHeight="400px">
+  <mat-grid-list cols="2" rowHeight="600px">
     <mat-grid-tile
       *ngFor="let card of cards | async"
       [colspan]="card.cols"
       [rowspan]="card.rows"
     >
       <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            {{ card.title }}
-          </mat-card-title>
-        </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <p>Content</p>
+          <!-- Renders Unique -->
+          <article *ngIf="card.breakfast"><meal></meal></article>
+          <!-- <article *ngIf="card.lunch"><lunch></lunch></article>
+          <article *ngIf="card.dinner"><dinner></dinner></article> -->
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

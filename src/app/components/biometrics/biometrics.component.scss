@@ -1,16 +1,17 @@
+// General Styles
 .container {
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
-  border: 1px solid green;
 }
 
 h2 {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 2rem;
   text-align: center;
 }
 
+// Form Styles
 .form-container {
   display: flex;
   flex-direction: column;
@@ -39,6 +40,7 @@ button {
   text-align: center;
 }
 
+// Media Queries
 @media screen and (max-width: 1000px) {
   h2 {
     font-size: 1.5rem;

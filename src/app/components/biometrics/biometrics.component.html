@@ -1,6 +1,7 @@
 <section class="container">
   <mat-card>
-    <h2>Enter your biometric data:</h2>
+    <h2>Enter your biometrics:</h2>
+    <!-- Biometric Form -->
     <form class="form-container">
       <div class="field-container">
         <mat-form-field
@@ -28,12 +29,7 @@
           <input matInput placeholder="Ex. 180" />
         </mat-form-field>
       </div>
-      <button
-        mat-raised-button
-        type="button"
-        color="accent"
-        (click)="onSubmit()"
-      >
+      <button mat-raised-button type="button" color="accent">
         Calculate BMR
       </button>
     </form>

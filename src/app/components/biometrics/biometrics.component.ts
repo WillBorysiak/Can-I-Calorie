@@ -9,8 +9,4 @@ export class BiometricsComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-
-  onSubmit() {
-    console.log('test');
-  }
 }
