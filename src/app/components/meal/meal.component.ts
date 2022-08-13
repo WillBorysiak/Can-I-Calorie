@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { capitalize } from 'src/app/utils/capitalize';
+import { Component, Input, OnInit } from '@angular/core';
 
 export interface FoodInterface {
   food: string;
@@ -11,6 +12,9 @@ export interface FoodInterface {
   styleUrls: ['./meal.component.scss'],
 })
 export class MealComponent implements OnInit {
+  @Input() mealType!: string;
+  @Input() example!: string;
+
   // Table Values
   displayedColumns = ['food', 'cals'];
   foodList: FoodInterface[] = [
@@ -29,5 +33,7 @@ export class MealComponent implements OnInit {
   }
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.mealType = capitalize(this.mealType);
+  }
 }

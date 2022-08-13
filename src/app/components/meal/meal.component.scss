@@ -1,9 +1,12 @@
 // Header Styles
+.container {
+  padding: 1rem;
+}
 .title-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url("../../../assets//images/breakfast.jpg");
+
   background-position: center;
   background-size: cover;
   height: 8vh;
@@ -12,6 +15,7 @@
 h2 {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 0.5rem;
+  color: ghostwhite;
   font-size: 2.5rem;
 }
 

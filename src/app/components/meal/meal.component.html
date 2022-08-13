@@ -1,12 +1,12 @@
 <div class="container">
   <header class="title-container">
-    <h2>Breakfast</h2>
+    <h2>{{ mealType }}</h2>
   </header>
   <!-- Form -->
   <div class="form-container">
     <mat-form-field class="input-field" appearance="fill" color="accent">
       <mat-label>Food</mat-label>
-      <input matInput placeholder="Ex. Porridge" />
+      <input matInput [placeholder]="example" />
     </mat-form-field>
     <mat-form-field class="input-field" appearance="fill" color="accent">
       <mat-label>Calories</mat-label>
