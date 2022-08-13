@@ -13,9 +13,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
-import { MealComponent } from './components/meal/meal.component';
+import { MealComponent } from './components/dashboard-features/meal/meal.component';
 import { NgModule } from '@angular/core';
-import { WorkoutComponent } from './components/workout/workout.component';
+import { WorkoutComponent } from './components/dashboard-features/workout/workout.component';
+import { SummaryComponent } from './components/dashboard-features/summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { WorkoutComponent } from './components/workout/workout.component';
     DashboardComponent,
     MealComponent,
     WorkoutComponent,
+    SummaryComponent,
   ],
   imports: [
     BrowserModule,

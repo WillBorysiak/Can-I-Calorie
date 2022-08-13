@@ -1,36 +1,34 @@
-<div class="container">
+<section class="container">
   <header class="title-container" [ngClass]="title">
     <h2>{{ titleCaptialized }}</h2>
   </header>
   <!-- Form -->
   <div class="form-container">
     <mat-form-field class="input-field" appearance="fill" color="accent">
-      <mat-label>Workout</mat-label>
+      <mat-label>Food</mat-label>
       <input matInput [placeholder]="placeholder" />
     </mat-form-field>
     <mat-form-field class="input-field" appearance="fill" color="accent">
       <mat-label>Calories</mat-label>
       <input matInput placeholder="Ex. 200" />
     </mat-form-field>
-    <button mat-raised-button color="accent">Add Workout</button>
+    <button mat-raised-button color="accent">Add Food</button>
   </div>
   <div class="food-list">
     <!-- Food Table -->
     <section class="table mat-elevation-z8" tabindex="0">
-      <table mat-table [dataSource]="workoutList">
+      <table mat-table [dataSource]="foodList">
         <!-- Food Column -->
         <ng-container matColumnDef="food">
-          <th mat-header-cell *matHeaderCellDef>Workout</th>
-          <td mat-cell *matCellDef="let workoutList">
-            {{ workoutList.exercise }}
-          </td>
+          <th mat-header-cell *matHeaderCellDef>Food</th>
+          <td mat-cell *matCellDef="let foodList">{{ foodList.food }}</td>
           <td mat-footer-cell *matFooterCellDef>Total</td>
         </ng-container>
         <!-- Cals Column -->
         <ng-container matColumnDef="cals">
           <th mat-header-cell *matHeaderCellDef>Calories</th>
-          <td mat-cell *matCellDef="let workoutList">
-            {{ workoutList.cals }}
+          <td mat-cell *matCellDef="let foodList">
+            {{ foodList.cals }}
           </td>
           <td mat-footer-cell *matFooterCellDef>
             {{ getTotalCals() }}
@@ -46,4 +44,4 @@
       </table>
     </section>
   </div>
-</div>
+</section>
