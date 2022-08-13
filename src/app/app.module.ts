@@ -15,6 +15,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
 import { MealComponent } from './components/meal/meal.component';
 import { NgModule } from '@angular/core';
+import { WorkoutComponent } from './components/workout/workout.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { NgModule } from '@angular/core';
     BiometricsComponent,
     DashboardComponent,
     MealComponent,
+    WorkoutComponent,
   ],
   imports: [
     BrowserModule,

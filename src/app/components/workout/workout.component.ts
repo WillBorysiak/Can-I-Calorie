@@ -1,30 +1,27 @@
 import { capitalize } from 'src/app/utils/capitalize';
 import { Component, Input, OnInit } from '@angular/core';
-import { FoodInterface } from 'src/app/models/food.model';
+import { WorkoutInterface } from 'src/app/models/workouts.model';
 
 @Component({
-  selector: 'meal',
-  templateUrl: './meal.component.html',
-  styleUrls: ['./meal.component.scss'],
+  selector: 'workout',
+  templateUrl: './workout.component.html',
+  styleUrls: ['./workout.component.scss'],
 })
-export class MealComponent implements OnInit {
+export class WorkoutComponent implements OnInit {
   @Input() title!: string;
   @Input() placeholder!: string;
   titleCaptialized!: string;
 
   // Table Values
   displayedColumns = ['food', 'cals'];
-  foodList: FoodInterface[] = [
-    { food: 'Porridge', cals: 200 },
-    { food: 'Milk', cals: 50 },
-    { food: 'Banana', cals: 100 },
-    { food: 'Blueberries', cals: 75 },
-    { food: 'Strawberries', cals: 50 },
+  workoutList: WorkoutInterface[] = [
+    { exercise: 'Running', cals: 500 },
+    { exercise: 'Yoga', cals: 150 },
   ];
 
   //  Get Total Cals
   getTotalCals() {
-    return this.foodList
+    return this.workoutList
       .map((t) => t.cals)
       .reduce((acc, value) => acc + value, 0);
   }
