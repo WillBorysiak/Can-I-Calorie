@@ -42,7 +42,7 @@ h2 {
 
 .input-field {
   padding-right: 2rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 button {
@@ -52,12 +52,8 @@ button {
   font-size: 1.5rem;
 }
 
-li {
-  list-style-type: none;
-}
-
 // Table Styles
-.table {
+.table-container {
   height: 300px;
   overflow: auto;
   text-align: start;
@@ -69,8 +65,16 @@ table {
   scrollbar-width: none; /* Firefox */
 }
 
+table th {
+  font-size: 1.2rem;
+}
+
+table td {
+  font-size: 1rem;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
-.table::-webkit-scrollbar {
+.table-container::-webkit-scrollbar {
   display: none;
 }
 

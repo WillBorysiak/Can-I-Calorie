@@ -16,6 +16,7 @@ export class WorkoutComponent implements OnInit {
   displayedColumns = ['food', 'cals'];
   workoutList: WorkoutInterface[] = [
     { exercise: 'Running', cals: 500 },
+    { exercise: 'Walking', cals: 350 },
     { exercise: 'Yoga', cals: 150 },
   ];
 

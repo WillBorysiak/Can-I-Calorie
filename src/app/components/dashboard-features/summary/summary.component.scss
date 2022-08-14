@@ -48,10 +48,18 @@ li {
 }
 
 // Table Styles
-.table {
+.table-container {
   height: 300px;
   overflow: auto;
   text-align: start;
+}
+
+table th {
+  font-size: 1.2rem;
+}
+
+table td {
+  font-size: 1rem;
 }
 
 table {
@@ -61,7 +69,7 @@ table {
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-.table::-webkit-scrollbar {
+.table-container::-webkit-scrollbar {
   display: none;
 }
 
@@ -81,8 +89,13 @@ tr.mat-footer-row {
   justify-content: space-around;
   margin-top: 1.5rem;
   color: ghostwhite;
-
   text-align: center;
+}
+
+.total-item {
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  padding: 1rem 2rem;
+  width: 20%;
 }
 
 .totals h3 {

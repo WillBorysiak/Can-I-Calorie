@@ -19,7 +19,13 @@ h2 {
   width: 100%;
 }
 
-.field-container {
+.bodydata-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.bodystats-container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -27,7 +33,7 @@ h2 {
 
 .mat-form-field {
   width: 30%;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
 }
 
 button {
@@ -42,9 +48,6 @@ button {
 
 // Media Queries
 @media screen and (max-width: 1000px) {
-  h2 {
-    font-size: 1.5rem;
-  }
   .mat-form-field {
     font-size: 1rem;
   }
@@ -55,7 +58,13 @@ button {
     width: 100%;
     font-size: 1rem;
   }
-  .field-container {
+  .bodydata-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+  }
+  .bodystats-container {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
