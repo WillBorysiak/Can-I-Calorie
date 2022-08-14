@@ -1,4 +1,4 @@
-.grid {
+.dashboard {
   grid-column-gap: 20px;
   grid-row-gap: 20px;
   display: grid;
@@ -29,4 +29,11 @@
 }
 .totals {
   grid-area: 3 / 2 / 4 / 3;
+}
+
+@media screen and (max-width: 1425px) {
+  .dashboard {
+    display: flex;
+    flex-direction: column;
+  }
 }
