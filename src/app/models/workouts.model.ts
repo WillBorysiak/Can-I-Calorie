@@ -1,4 +1,4 @@
 export interface WorkoutInterface {
   exercise: string;
-  cals: number;
+  cals: number | null;
 }

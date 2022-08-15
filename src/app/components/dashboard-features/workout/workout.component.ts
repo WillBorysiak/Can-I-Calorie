@@ -1,5 +1,6 @@
 import { capitalize } from 'src/app/utils/capitalize';
 import { Component, Input, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { WorkoutInterface } from 'src/app/models/workouts.model';
 
 @Component({
@@ -11,24 +12,38 @@ export class WorkoutComponent implements OnInit {
   @Input() title!: string;
   @Input() placeholder!: string;
   titleCaptialized!: string;
+  dataSource: MatTableDataSource<WorkoutInterface>;
+
+  workout!: string;
+  cals!: number | null;
 
   // Table Values
-  displayedColumns = ['food', 'cals'];
-  workoutList: WorkoutInterface[] = [
-    { exercise: 'Running', cals: 500 },
-    { exercise: 'Walking', cals: 350 },
-    { exercise: 'Yoga', cals: 150 },
-  ];
+  displayedColumns = ['workout', 'cals'];
 
-  //  Get Total Cals
-  getTotalCals() {
-    return this.workoutList
-      .map((t) => t.cals)
-      .reduce((acc, value) => acc + value, 0);
+  constructor() {
+    this.dataSource = new MatTableDataSource();
   }
-  constructor() {}
 
   ngOnInit(): void {
     this.titleCaptialized = capitalize(this.title);
+  }
+
+  //  Get Total Cals
+  getTotalCals() {
+    return this.dataSource.data
+      .map((t) => t.cals)
+      .reduce((acc, value) => acc! + value!, 0);
+  }
+
+  // Create Workout and add to table
+  createWorkout() {
+    const workout = {
+      exercise: capitalize(this.workout),
+      cals: this.cals,
+    };
+    this.dataSource.data.push(workout);
+    this.dataSource._updateChangeSubscription();
+    this.workout = '';
+    this.cals = null;
   }
 }

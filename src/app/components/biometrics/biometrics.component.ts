@@ -25,15 +25,7 @@ export class BiometricsComponent implements OnInit {
       this.weight,
       this.height
     );
-    console.log(
-      this.calculateBmr(
-        this.sex,
-        this.activity,
-        this.age,
-        this.weight,
-        this.height
-      )
-    );
+
     // Clear Values
     this.sex = '';
     this.activity = '';
