@@ -1,4 +1,4 @@
 export interface FoodInterface {
   food: string;
-  cals: number;
+  cals: number | null;
 }

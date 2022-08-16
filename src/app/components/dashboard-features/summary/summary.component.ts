@@ -16,9 +16,9 @@ export class SummaryComponent implements OnInit {
   displayedColumns = ['event', 'cals'];
   totalsList: SummaryInterface[] = [
     { event: 'Breakfast', cals: 500 },
-    { event: 'Lunch', cals: 600 },
-    { event: 'Dinner', cals: 700 },
-    { event: 'Snacks', cals: 200 },
+    { event: 'Lunch', cals: 500 },
+    { event: 'Dinner', cals: 500 },
+    { event: 'Snacks', cals: 500 },
     { event: 'Workouts', cals: -500 },
   ];
 

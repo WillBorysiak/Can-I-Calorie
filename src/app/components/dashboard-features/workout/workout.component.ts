@@ -35,13 +35,13 @@ export class WorkoutComponent implements OnInit {
       .reduce((acc, value) => acc! + value!, 0);
   }
 
-  // Create Workout and add to table
+  // Create workout and add to table
   createWorkout() {
-    const workout = {
+    const workoutObj = {
       exercise: capitalize(this.workout),
       cals: this.cals,
     };
-    this.dataSource.data.push(workout);
+    this.dataSource.data.push(workoutObj);
     this.dataSource._updateChangeSubscription();
     this.workout = '';
     this.cals = null;

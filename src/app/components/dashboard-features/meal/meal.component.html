@@ -6,18 +6,25 @@
   <div class="form-container">
     <mat-form-field class="input-field" appearance="fill" color="accent">
       <mat-label>Food</mat-label>
-      <input matInput [placeholder]="placeholder" />
+      <input
+        matInput
+        [placeholder]="placeholder"
+        type="text"
+        [(ngModel)]="food"
+      />
     </mat-form-field>
     <mat-form-field class="input-field" appearance="fill" color="accent">
       <mat-label>Calories</mat-label>
-      <input matInput placeholder="Ex. 200" />
+      <input matInput placeholder="Ex. 200" type="number" [(ngModel)]="cals" />
     </mat-form-field>
-    <button mat-raised-button color="accent">Add Food</button>
+    <button mat-raised-button color="accent" (click)="createFood()">
+      Add Food
+    </button>
   </div>
   <div class="food-list">
     <!-- Food Table -->
     <section class="table-container mat-elevation-z8" tabindex="0">
-      <table mat-table [dataSource]="foodList">
+      <table mat-table [dataSource]="dataSource">
         <!-- Food Column -->
         <ng-container matColumnDef="food">
           <th mat-header-cell *matHeaderCellDef>Food</th>
