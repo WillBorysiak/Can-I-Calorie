@@ -1,5 +1,6 @@
 import { AppComponent } from './app.component';
 import { BiometricsComponent } from './components/biometrics/biometrics.component';
+import { bmrReducer } from './state/bmr.reducer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -17,6 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MealComponent } from './components/dashboard-features/meal/meal.component';
 import { NgModule } from '@angular/core';
+import { StoreModule } from '@ngrx/store';
 import { SummaryComponent } from './components/dashboard-features/summary/summary.component';
 import { WorkoutComponent } from './components/dashboard-features/workout/workout.component';
 
@@ -44,6 +46,7 @@ import { WorkoutComponent } from './components/dashboard-features/workout/workou
     MatTableModule,
     FormsModule,
     MatSelectModule,
+    StoreModule.forRoot({ bmr: bmrReducer }),
   ],
   providers: [],
   bootstrap: [AppComponent],

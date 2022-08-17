@@ -1,5 +1,7 @@
 import { capitalize } from 'src/app/utils/capitalize';
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { SummaryInterface } from 'src/app/models/summary.model';
 
 @Component({
@@ -8,6 +10,7 @@ import { SummaryInterface } from 'src/app/models/summary.model';
   styleUrls: ['./summary.component.scss'],
 })
 export class SummaryComponent implements OnInit {
+  bmr$!: Observable<number>;
   @Input() title!: string;
   @Input() placeholder!: string;
   titleCaptialized!: string;
@@ -15,11 +18,11 @@ export class SummaryComponent implements OnInit {
   // Table Values
   displayedColumns = ['event', 'cals'];
   totalsList: SummaryInterface[] = [
-    { event: 'Breakfast', cals: 500 },
-    { event: 'Lunch', cals: 500 },
-    { event: 'Dinner', cals: 500 },
-    { event: 'Snacks', cals: 500 },
-    { event: 'Workouts', cals: -500 },
+    { event: 'Breakfast', cals: 0 },
+    { event: 'Lunch', cals: 0 },
+    { event: 'Dinner', cals: 0 },
+    { event: 'Snacks', cals: 0 },
+    { event: 'Workouts', cals: 0 },
   ];
 
   //  Get Total Cals
@@ -28,7 +31,9 @@ export class SummaryComponent implements OnInit {
       .map((t) => t.cals)
       .reduce((acc, value) => acc + value, 0);
   }
-  constructor() {}
+  constructor(private store: Store<{ bmr: number }>) {
+    this.bmr$ = store.select('bmr');
+  }
 
   ngOnInit(): void {
     this.titleCaptialized = capitalize(this.title);

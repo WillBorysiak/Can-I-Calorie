@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { generateBmr } from 'src/app/state/bmr.actions';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'biometrics',
@@ -6,33 +9,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./biometrics.component.scss'],
 })
 export class BiometricsComponent implements OnInit {
+  bmr!: number;
   sex!: string;
   activity!: string;
   age!: number | string;
   weight!: number | string;
   height!: number | string;
 
-  constructor() {}
+  constructor(private store: Store<{ bmr: number }>) {}
 
-  ngOnInit(): void {}
-
-  getBiometricData() {
-    // Calculate BMR
-    this.calculateBmr(
+  submitBmr() {
+    // this.store.dispatch(generateBmr());
+    this.bmr = this.calculateBmr(
       this.sex,
       this.activity,
       this.age,
       this.weight,
       this.height
     );
-
-    // Clear Values
-    this.sex = '';
-    this.activity = '';
-    this.age = '';
-    this.weight = '';
-    this.height = '';
+    this.store.dispatch(generateBmr({ value: this.bmr }));
   }
+
+  ngOnInit(): void {}
 
   calculateBmr(
     sex: string,
