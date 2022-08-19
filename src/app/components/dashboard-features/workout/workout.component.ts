@@ -1,6 +1,8 @@
 import { capitalize } from 'src/app/utils/capitalize';
 import { Component, Input, OnInit } from '@angular/core';
+import { generateWorkout } from 'src/app/state/app.actions';
 import { MatTableDataSource } from '@angular/material/table';
+import { Store } from '@ngrx/store';
 import { WorkoutInterface } from 'src/app/models/workouts.model';
 
 @Component({
@@ -20,7 +22,7 @@ export class WorkoutComponent implements OnInit {
   // Table Values
   displayedColumns = ['workout', 'cals'];
 
-  constructor() {
+  constructor(private store: Store<{ workout: number }>) {
     this.dataSource = new MatTableDataSource();
   }
 
@@ -43,6 +45,7 @@ export class WorkoutComponent implements OnInit {
     };
     this.dataSource.data.push(workoutObj);
     this.dataSource._updateChangeSubscription();
+    this.store.dispatch(generateWorkout({ value: this.getTotalCals() }));
     this.workout = '';
     this.cals = null;
   }

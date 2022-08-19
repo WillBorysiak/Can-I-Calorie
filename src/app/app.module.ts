@@ -17,10 +17,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MealComponent } from './components/dashboard-features/meal/meal.component';
+import { mealReducer } from './state/meal.reducer';
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { SummaryComponent } from './components/dashboard-features/summary/summary.component';
 import { WorkoutComponent } from './components/dashboard-features/workout/workout.component';
+import { workoutReducer } from './state/workout.reducer';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,11 @@ import { WorkoutComponent } from './components/dashboard-features/workout/workou
     MatTableModule,
     FormsModule,
     MatSelectModule,
-    StoreModule.forRoot({ bmr: bmrReducer }),
+    StoreModule.forRoot({
+      bmr: bmrReducer,
+      meal: mealReducer,
+      workout: workoutReducer,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

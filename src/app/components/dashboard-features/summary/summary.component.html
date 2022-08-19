@@ -7,7 +7,7 @@
     <table mat-table [dataSource]="totalsList">
       <!-- Food Column -->
       <ng-container matColumnDef="event">
-        <th mat-header-cell *matHeaderCellDef>Meals/Exercise</th>
+        <th mat-header-cell *matHeaderCellDef>Meals</th>
         <td mat-cell *matCellDef="let totalsList">{{ totalsList.event }}</td>
         <td mat-footer-cell *matFooterCellDef>Total</td>
       </ng-container>
@@ -33,11 +33,11 @@
       <p>Goal</p>
     </div>
     <div class="total-item food">
-      <h3>0</h3>
+      <h3>{{ meal$ | async }}</h3>
       <p>Food</p>
     </div>
     <div class="total-item exercise">
-      <h3>0</h3>
+      <h3>{{ workout$ | async }}</h3>
       <p>Exercise</p>
     </div>
     <div class="total-item remaining">

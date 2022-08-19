@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { generateBmr } from './bmr.actions';
+import { generateBmr } from './app.actions';
 
 export const initialState = 0;
 

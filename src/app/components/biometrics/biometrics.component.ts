@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { generateBmr } from 'src/app/state/bmr.actions';
-import { Observable } from 'rxjs';
+import { generateBmr } from 'src/app/state/app.actions';
 import { Store } from '@ngrx/store';
 
 @Component({

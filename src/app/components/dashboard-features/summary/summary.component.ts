@@ -10,7 +10,12 @@ import { SummaryInterface } from 'src/app/models/summary.model';
   styleUrls: ['./summary.component.scss'],
 })
 export class SummaryComponent implements OnInit {
+  // Store Variables
   bmr$!: Observable<number>;
+  meal$!: Observable<number>;
+  workout$!: Observable<number>;
+
+  // Component Variables
   @Input() title!: string;
   @Input() placeholder!: string;
   titleCaptialized!: string;
@@ -22,7 +27,6 @@ export class SummaryComponent implements OnInit {
     { event: 'Lunch', cals: 0 },
     { event: 'Dinner', cals: 0 },
     { event: 'Snacks', cals: 0 },
-    { event: 'Workouts', cals: 0 },
   ];
 
   //  Get Total Cals
@@ -31,8 +35,12 @@ export class SummaryComponent implements OnInit {
       .map((t) => t.cals)
       .reduce((acc, value) => acc + value, 0);
   }
-  constructor(private store: Store<{ bmr: number }>) {
+  constructor(
+    private store: Store<{ bmr: number; meal: number; workout: number }>
+  ) {
     this.bmr$ = store.select('bmr');
+    this.meal$ = store.select('meal');
+    this.workout$ = this.store.select('workout');
   }
 
   ngOnInit(): void {
