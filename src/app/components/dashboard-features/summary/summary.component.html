@@ -4,7 +4,7 @@
   </header>
   <!-- Food Table -->
   <div class="table-container mat-elevation-z8" tabindex="0">
-    <table mat-table [dataSource]="totalsList">
+    <table mat-table [dataSource]="dataSource">
       <!-- Food Column -->
       <ng-container matColumnDef="event">
         <th mat-header-cell *matHeaderCellDef>Meals</th>
@@ -33,7 +33,7 @@
       <p>Goal</p>
     </div>
     <div class="total-item food">
-      <h3>{{ meal$ | async }}</h3>
+      <h3>{{ breakfast$ | async }}</h3>
       <p>Food</p>
     </div>
     <div class="total-item exercise">
