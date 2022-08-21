@@ -1,21 +1,29 @@
 import { createReducer, on } from '@ngrx/store';
-import { generateBreakfast, generateLunch } from './app.actions';
-import { MealReducerInterface } from './mealReducer.model';
+import {
+  generateBreakfast,
+  generateLunch,
+  generateDinner,
+  generateSnack,
+} from './app.actions';
 
-export const initialState: MealReducerInterface = {
-  breakfast: 0,
-  lunch: 0,
-};
+export const initialState = 0;
 
 export const breakfastReducer = createReducer(
   initialState,
-  on(generateBreakfast, (state, props) => ({
-    ...state,
-    breakfast: props.value,
-  }))
+  on(generateBreakfast, (state, props) => props.value!)
 );
 
 export const lunchReducer = createReducer(
   initialState,
-  on(generateLunch, (state, props) => ({ ...state, lunch: props.value }))
+  on(generateLunch, (state, props) => props.value!)
+);
+
+export const dinnerReducer = createReducer(
+  initialState,
+  on(generateDinner, (state, props) => props.value!)
+);
+
+export const snackReducer = createReducer(
+  initialState,
+  on(generateSnack, (state, props) => props.value!)
 );

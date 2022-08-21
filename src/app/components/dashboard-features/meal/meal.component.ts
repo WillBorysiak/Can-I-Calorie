@@ -1,9 +1,15 @@
 import { capitalize } from 'src/app/utils/capitalize';
 import { Component, Input, OnInit } from '@angular/core';
 import { FoodInterface } from 'src/app/models/food.model';
-import { generateBreakfast, generateLunch } from 'src/app/state/app.actions';
 import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
+import { StoreInterface } from 'src/app/models/store.model';
+import {
+  generateBreakfast,
+  generateDinner,
+  generateLunch,
+  generateSnack,
+} from 'src/app/state/app.actions';
 
 @Component({
   selector: 'meal',
@@ -22,7 +28,7 @@ export class MealComponent implements OnInit {
   // Table Values
   displayedColumns = ['food', 'cals'];
 
-  constructor(private store: Store<{ breakfast: number; lunch: number }>) {
+  constructor(private store: Store<StoreInterface>) {
     this.dataSource = new MatTableDataSource();
   }
 
@@ -47,14 +53,17 @@ export class MealComponent implements OnInit {
     this.dataSource._updateChangeSubscription();
     if (this.title === 'breakfast') {
       this.store.dispatch(generateBreakfast({ value: this.getTotalCals() }));
-      console.log('breakfast add');
-      console.log(this.getTotalCals());
     }
     if (this.title === 'lunch') {
       this.store.dispatch(generateLunch({ value: this.getTotalCals() }));
-      console.log('lunch add');
-      console.log(this.getTotalCals());
     }
+    if (this.title === 'dinner') {
+      this.store.dispatch(generateDinner({ value: this.getTotalCals() }));
+    }
+    if (this.title === 'snacks') {
+      this.store.dispatch(generateSnack({ value: this.getTotalCals() }));
+    }
+
     this.food = '';
     this.cals = null;
   }

@@ -8,13 +8,25 @@ export const generateBmr = createAction(
 
 // Breakfast
 export const generateBreakfast = createAction(
-  '[Meal Component] Generate',
+  '[Breakfast Component] Generate',
   props<{ value: number | null }>()
 );
 
 // Lunch
 export const generateLunch = createAction(
-  '[Meal Component] Generate',
+  '[Lunch Component] Generate',
+  props<{ value: number | null }>()
+);
+
+// Dinner
+export const generateDinner = createAction(
+  '[Dinner Component] Generate',
+  props<{ value: number | null }>()
+);
+
+// Snacks
+export const generateSnack = createAction(
+  '[Snack Component] Generate',
   props<{ value: number | null }>()
 );
 
