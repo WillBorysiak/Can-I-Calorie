@@ -33,7 +33,7 @@
       <p>Goal</p>
     </div>
     <div class="total-item food">
-      <h3>{{ totalCals }}</h3>
+      <h3>{{ getTotalCals() }}</h3>
       <p>Food</p>
     </div>
     <div class="total-item exercise">
@@ -41,7 +41,9 @@
       <p>Exercise</p>
     </div>
     <div class="total-item remaining">
-      <h3>0</h3>
+      <h3>
+        {{ ((bmr$ | async) || 0) - getTotalCals() + ((workout$ | async) || 0) }}
+      </h3>
       <p>Remaining</p>
     </div>
   </div>

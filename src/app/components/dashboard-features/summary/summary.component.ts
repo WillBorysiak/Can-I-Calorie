@@ -5,6 +5,14 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { StoreInterface } from 'src/app/models/store.model';
 import { SummaryInterface } from 'src/app/models/summary.model';
+import {
+  selectBmr,
+  selectBreakfast,
+  selectDinner,
+  selectLunch,
+  selectSnack,
+  selectWorkout,
+} from 'src/app/state/app.selectors';
 
 @Component({
   selector: 'summary',
@@ -16,13 +24,11 @@ export class SummaryComponent implements OnInit {
   dataSource!: MatTableDataSource<SummaryInterface>;
   // Store Variables
   bmr$!: Observable<number>;
-  breakfast$!: Observable<number>;
-  lunch$!: Observable<number>;
-  dinner$!: Observable<number>;
-  snack$!: Observable<number>;
+  breakfast = 0;
+  lunch = 0;
+  dinner = 0;
+  snack = 0;
   workout$!: Observable<number>;
-
-  totalCals: number = 0;
 
   // Component Variables
   @Input() title!: string;
@@ -33,7 +39,7 @@ export class SummaryComponent implements OnInit {
   displayedColumns = ['event', 'cals'];
 
   constructor(private store: Store<StoreInterface>) {
-    this.dataSource = new MatTableDataSource([
+    this.dataSource = new MatTableDataSource<SummaryInterface>([
       {
         event: 'Breakfast',
         cals: 0,
@@ -42,39 +48,46 @@ export class SummaryComponent implements OnInit {
       { event: 'Dinner', cals: 0 },
       { event: 'Snacks', cals: 0 },
     ]);
-
-    // Connecting to store
-    this.bmr$ = store.select('bmr');
-    this.breakfast$ = store.select('breakfast');
-    this.lunch$ = store.select('lunch');
-    this.dinner$ = store.select('dinner');
-    this.snack$ = store.select('snack');
-    this.workout$ = this.store.select('workout');
-
-    // Adding Meals to the table
-    this.breakfast$.subscribe((value) => {
-      this.dataSource.data[0].cals = value;
-      this.totalCals = this.getTotalCals();
-    });
-    this.lunch$.subscribe((value) => {
-      this.dataSource.data[1].cals = value;
-      this.totalCals = this.getTotalCals();
-    });
-    this.dinner$.subscribe((value) => {
-      this.dataSource.data[2].cals = value;
-      this.totalCals = this.getTotalCals();
-    });
-    this.snack$.subscribe((value) => {
-      this.dataSource.data[3].cals = value;
-      this.totalCals = this.getTotalCals();
-    });
   }
 
   ngOnInit(): void {
     this.titleCaptialized = capitalize(this.title);
+
+    // Connecting to store
+    this.bmr$ = this.store.select(selectBmr);
+    this.workout$ = this.store.select(selectWorkout);
+
+    // Food values to table
+    this.store.select(selectBreakfast).subscribe((data) => {
+      this.breakfast = data;
+      this.refresh();
+    });
+    this.store.select(selectLunch).subscribe((data) => {
+      this.lunch = data;
+      this.refresh();
+    });
+    this.store.select(selectDinner).subscribe((data) => {
+      this.dinner = data;
+      this.refresh();
+    });
+    this.store.select(selectSnack).subscribe((data) => {
+      this.snack = data;
+      this.refresh();
+    });
+  }
+  refresh() {
+    this.dataSource.data = [
+      {
+        event: 'Breakfast',
+        cals: this.breakfast,
+      },
+      { event: 'Lunch', cals: this.lunch },
+      { event: 'Dinner', cals: this.dinner },
+      { event: 'Snacks', cals: this.snack },
+    ];
   }
 
-  //  Get Total Cals
+  //  Get total cals
   getTotalCals() {
     return this.dataSource.data
       .map((t) => t.cals)

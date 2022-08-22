@@ -34,7 +34,12 @@
 
 <h2 align="center">What I Learnt</h2>
 
-Work In Progress
+- How to use Angular and its ecosystem of packages to create a single page application for the first time!
+- How to use Angular Material to create form fields, cards, buttons and other HTML elements.
+- How to pass data through the application with Inputs so I can dynamically render new components.
+- How to use RxJS to manage variables in the form of observables that will register changes and alter the data.
+- How to use NgRx to store the values from my components and pass them into a singular summary component.
+- How to create animations using the built in module to render page elements gradually on initial page load.
 
 <h2 align="center">What Was The Biggest Challenge</h2>
 

@@ -1,6 +1,6 @@
 import { AppComponent } from './app.component';
+import { appReducer } from './state/app.reducer';
 import { BiometricsComponent } from './components/biometrics/biometrics.component';
-import { bmrReducer } from './state/bmr.reducer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -21,13 +21,6 @@ import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { SummaryComponent } from './components/dashboard-features/summary/summary.component';
 import { WorkoutComponent } from './components/dashboard-features/workout/workout.component';
-import { workoutReducer } from './state/workout.reducer';
-import {
-  breakfastReducer,
-  dinnerReducer,
-  lunchReducer,
-  snackReducer,
-} from './state/meal.reducer';
 
 @NgModule({
   declarations: [
@@ -54,13 +47,9 @@ import {
     FormsModule,
     MatSelectModule,
     StoreModule.forRoot({
-      bmr: bmrReducer,
-      breakfast: breakfastReducer,
-      lunch: lunchReducer,
-      dinner: dinnerReducer,
-      snack: snackReducer,
-      workout: workoutReducer,
+      app: appReducer,
     }),
+    StoreModule.forFeature('store', appReducer),
   ],
   providers: [],
   bootstrap: [AppComponent],
