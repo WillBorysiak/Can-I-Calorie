@@ -1,82 +1,85 @@
 <section class="container">
   <mat-card>
-    <h2>Enter your biometrics:</h2>
-    <!-- Biometric Form -->
-    <form class="form-container" (submit)="submitBmr()">
-      <div class="bodydata-container">
-        <mat-form-field appearance="fill" color="accent">
-          <mat-label>Select Biological Sex</mat-label>
-          <mat-select name="sex" [(ngModel)]="sex">
-            <mat-option value="male">Male</mat-option>
-            <mat-option value="female">Female</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="fill" color="accent">
-          <mat-label>Select Activity Level</mat-label>
-          <mat-select name="activity" [(ngModel)]="activity">
-            <mat-option value="1.2">Sedentary (little to none)</mat-option>
-            <mat-option value="1.375"
-              >Lightly Active (light exercise 1 - 3 days/week)</mat-option
-            >
-            <mat-option value="1.55"
-              >Moderately Active (moderate exercise 3-5 days/week)</mat-option
-            >
-            <mat-option value="1.725"
-              >Very Active (hard exercise 6-7 days/week)</mat-option
-            >
-            <mat-option value="1.9"
-              >Extremely Active (very hard exercise & physical job)</mat-option
-            >
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="bodystats-container">
-        <mat-form-field
-          class="example-full-width"
-          appearance="fill"
-          color="accent"
-        >
-          <mat-label>Enter Your Age (yrs)</mat-label>
-          <input
-            matInput
-            placeholder="Ex. 25"
-            type="number"
-            name="age"
-            [(ngModel)]="age"
-          />
-        </mat-form-field>
-        <mat-form-field
-          class="example-full-width"
-          appearance="fill"
-          color="accent"
-        >
-          <mat-label>Enter Your Weight (kg)</mat-label>
-          <input
-            matInput
-            placeholder="Ex. 70"
-            type="number"
-            name="weight"
-            [(ngModel)]="weight"
-          />
-        </mat-form-field>
-        <mat-form-field
-          class="example-full-width"
-          appearance="fill"
-          color="accent"
-        >
-          <mat-label>Enter Your Height (cm)</mat-label>
-          <input
-            matInput
-            placeholder="Ex. 180"
-            type="number"
-            name="height"
-            [(ngModel)]="height"
-          />
-        </mat-form-field>
-      </div>
-      <button mat-raised-button type="submit" color="accent">
-        Calculate BMR
-      </button>
-    </form>
+    <mat-card-content>
+      <h2>Enter your biometrics:</h2>
+      <!-- Biometric Form -->
+      <form class="form-container" (submit)="submitBmr()">
+        <div class="bodydata-container">
+          <mat-form-field appearance="fill" color="accent">
+            <mat-label>Select Biological Sex</mat-label>
+            <mat-select name="sex" [(ngModel)]="sex">
+              <mat-option value="male">Male</mat-option>
+              <mat-option value="female">Female</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill" color="accent">
+            <mat-label>Select Activity Level</mat-label>
+            <mat-select name="activity" [(ngModel)]="activity">
+              <mat-option value="1.2">Sedentary (little to none)</mat-option>
+              <mat-option value="1.375"
+                >Lightly Active (light exercise 1 - 3 days/week)</mat-option
+              >
+              <mat-option value="1.55"
+                >Moderately Active (moderate exercise 3-5 days/week)</mat-option
+              >
+              <mat-option value="1.725"
+                >Very Active (hard exercise 6-7 days/week)</mat-option
+              >
+              <mat-option value="1.9"
+                >Extremely Active (very hard exercise & physical
+                job)</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="bodystats-container">
+          <mat-form-field
+            class="example-full-width"
+            appearance="fill"
+            color="accent"
+          >
+            <mat-label>Enter Your Age (yrs)</mat-label>
+            <input
+              matInput
+              placeholder="Ex. 25"
+              type="number"
+              name="age"
+              [(ngModel)]="age"
+            />
+          </mat-form-field>
+          <mat-form-field
+            class="example-full-width"
+            appearance="fill"
+            color="accent"
+          >
+            <mat-label>Enter Your Weight (kg)</mat-label>
+            <input
+              matInput
+              placeholder="Ex. 70"
+              type="number"
+              name="weight"
+              [(ngModel)]="weight"
+            />
+          </mat-form-field>
+          <mat-form-field
+            class="example-full-width"
+            appearance="fill"
+            color="accent"
+          >
+            <mat-label>Enter Your Height (cm)</mat-label>
+            <input
+              matInput
+              placeholder="Ex. 180"
+              type="number"
+              name="height"
+              [(ngModel)]="height"
+            />
+          </mat-form-field>
+        </div>
+        <button mat-raised-button type="submit" color="accent">
+          Calculate BMR
+        </button>
+      </form>
+    </mat-card-content>
   </mat-card>
 </section>

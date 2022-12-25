@@ -6,6 +6,7 @@
 }
 
 h2 {
+  color: ghostwhite;
   font-weight: 600;
   font-size: 2rem;
   text-align: center;
@@ -31,7 +32,7 @@ h2 {
   justify-content: space-around;
 }
 
-.mat-form-field {
+.mat-mdc-form-field {
   width: 30%;
   font-size: 1.2rem;
 }
@@ -39,7 +40,7 @@ h2 {
 button {
   margin-right: auto;
   margin-left: auto;
-  padding: 1rem;
+  padding: 1.5rem;
   width: fit-content;
   font-weight: bold;
   font-size: 1.5rem;
@@ -54,7 +55,7 @@ button {
 }
 
 @media screen and (max-width: 700px) {
-  .mat-form-field {
+  .mat-mdc-form-field {
     width: 100%;
     font-size: 1rem;
   }
