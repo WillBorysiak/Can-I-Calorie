@@ -1,20 +1,17 @@
-@import "normalize.css";
+@use "@angular/material" as mat;
 
-@import "@angular/material/theming";
-$custom-typography: mat-typography-config(
+$custom-typography: mat.define-typography-config(
   $font-family: Lato,
 );
+@include mat.typography-hierarchy($custom-typography);
 
-@include angular-material-typography($custom-typography);
+.mat-typography {
+  font-family: "Lato", sans-serif;
+}
 
 html {
-  background: linear-gradient(
-      45deg,
-      #dca 12%,
-      transparent 0,
-      transparent 88%,
-      #dca 0
-    ),
+  background:
+    linear-gradient(45deg, #dca 12%, transparent 0, transparent 88%, #dca 0),
     linear-gradient(135deg, transparent 37%, #a85 0, #a85 63%, transparent 0),
     linear-gradient(45deg, transparent 37%, #dca 0, #dca 63%, transparent 0)
       #753;

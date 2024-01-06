@@ -25,6 +25,7 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
+              "node_modules/normalize.css/normalize.css",
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "src/sass/styles.scss"
             ],
@@ -67,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "can-i-calories:build:production"
+              "buildTarget": "can-i-calories:build:production"
             },
             "development": {
-              "browserTarget": "can-i-calories:build:development"
+              "buildTarget": "can-i-calories:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "can-i-calories:build"
+            "buildTarget": "can-i-calories:build"
           }
         },
         "test": {
