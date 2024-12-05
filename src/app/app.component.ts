@@ -15,6 +15,7 @@ const fadeInDashboard = trigger('fadeInDashboard', [enterTransitionDashboard]);
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [fadeInHero, fadeInMetrics, fadeInDashboard],
+  standalone: false,
 })
 export class AppComponent {
   title = 'can-i-calories';

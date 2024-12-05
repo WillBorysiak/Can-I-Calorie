@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
   selector: 'biometrics',
   templateUrl: './biometrics.component.html',
   styleUrls: ['./biometrics.component.scss'],
+  standalone: false,
 })
 export class BiometricsComponent implements OnInit {
   bmr!: number;
@@ -18,7 +19,6 @@ export class BiometricsComponent implements OnInit {
   constructor(private store: Store<{ bmr: number }>) {}
 
   submitBmr() {
-    // this.store.dispatch(generateBmr());
     this.bmr = this.calculateBmr(
       this.sex,
       this.activity,
@@ -38,12 +38,10 @@ export class BiometricsComponent implements OnInit {
     weight: number | string,
     height: number | string
   ) {
-    // Male Calculation
     if (sex === 'male') {
       const maleBmr = 66.5 + 13.75 * +weight + 5.003 * +height - 6.755 * +age;
       const totalBmr = maleBmr * +activity;
       return +totalBmr.toFixed(0);
-      // Female Calculation
     } else {
       const femaleBmr = 655.1 + 9.563 * +weight + 1.85 * +height - 4.676 * +age;
       const totalBmr = femaleBmr * +activity;

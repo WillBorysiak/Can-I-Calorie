@@ -18,11 +18,11 @@ import {
   selector: 'summary',
   templateUrl: './summary.component.html',
   styleUrls: ['./summary.component.scss'],
+  standalone: false,
 })
 export class SummaryComponent implements OnInit {
-  // Data Source
   dataSource!: MatTableDataSource<SummaryInterface>;
-  // Store Variables
+
   bmr$!: Observable<number>;
   breakfast = 0;
   lunch = 0;
@@ -30,12 +30,10 @@ export class SummaryComponent implements OnInit {
   snack = 0;
   workout$!: Observable<number>;
 
-  // Component Variables
   @Input() title!: string;
   @Input() placeholder!: string;
   titleCaptialized!: string;
 
-  // Table Values
   displayedColumns = ['event', 'cals'];
 
   constructor(private store: Store<StoreInterface>) {
@@ -53,11 +51,9 @@ export class SummaryComponent implements OnInit {
   ngOnInit(): void {
     this.titleCaptialized = capitalize(this.title);
 
-    // Connecting to store
     this.bmr$ = this.store.select(selectBmr);
     this.workout$ = this.store.select(selectWorkout);
 
-    // Food values to table
     this.store.select(selectBreakfast).subscribe((data) => {
       this.breakfast = data;
       this.refresh();
@@ -87,7 +83,6 @@ export class SummaryComponent implements OnInit {
     ];
   }
 
-  //  Get total cals
   getTotalCals() {
     return this.dataSource.data
       .map((t) => t.cals)

@@ -9,6 +9,7 @@ import { WorkoutInterface } from 'src/app/models/workouts.model';
   selector: 'workout',
   templateUrl: './workout.component.html',
   styleUrls: ['./workout.component.scss'],
+  standalone: false,
 })
 export class WorkoutComponent implements OnInit {
   @Input() title!: string;
@@ -19,7 +20,6 @@ export class WorkoutComponent implements OnInit {
   workout!: string;
   cals!: number | null;
 
-  // Table Values
   displayedColumns = ['workout', 'cals'];
 
   constructor(private store: Store<{ workout: number }>) {
@@ -30,14 +30,12 @@ export class WorkoutComponent implements OnInit {
     this.titleCaptialized = capitalize(this.title);
   }
 
-  //  Get Total Cals
   getTotalCals() {
     return this.dataSource.data
       .map((t) => t.cals)
       .reduce((acc, value) => acc! + value!, 0);
   }
 
-  // Create workout and add to table
   createWorkout() {
     const workoutObj = {
       exercise: capitalize(this.workout),

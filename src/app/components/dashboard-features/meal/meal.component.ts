@@ -15,6 +15,7 @@ import {
   selector: 'meal',
   templateUrl: './meal.component.html',
   styleUrls: ['./meal.component.scss'],
+  standalone: false,
 })
 export class MealComponent implements OnInit {
   @Input() title!: string;
@@ -25,7 +26,6 @@ export class MealComponent implements OnInit {
   food!: string;
   cals!: number | null;
 
-  // Table Values
   displayedColumns = ['food', 'cals'];
 
   constructor(private store: Store<StoreInterface>) {
@@ -43,7 +43,6 @@ export class MealComponent implements OnInit {
       .reduce((acc, value) => acc! + value!, 0);
   }
 
-  // Create food and add to table
   createFood() {
     const foodObj = {
       food: capitalize(this.food),
