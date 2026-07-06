@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { generateBmr } from 'src/app/state/app.actions';
 import { Store } from '@ngrx/store';
 
@@ -9,14 +9,14 @@ import { Store } from '@ngrx/store';
   standalone: false,
 })
 export class BiometricsComponent implements OnInit {
+  protected store = inject<Store<{ bmr: number }>>(Store);
+
   bmr!: number;
   sex!: string;
   activity!: string;
   age!: number | string;
   weight!: number | string;
   height!: number | string;
-
-  constructor(private store: Store<{ bmr: number }>) {}
 
   submitBmr() {
     this.bmr = this.calculateBmr(
@@ -26,6 +26,7 @@ export class BiometricsComponent implements OnInit {
       this.weight,
       this.height
     );
+
     this.store.dispatch(generateBmr({ value: this.bmr }));
   }
 

@@ -1,5 +1,5 @@
 import { capitalize } from 'src/app/utils/capitalize';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -21,6 +21,8 @@ import {
   standalone: false,
 })
 export class SummaryComponent implements OnInit {
+  protected store = inject(Store<StoreInterface>);
+
   dataSource!: MatTableDataSource<SummaryInterface>;
 
   bmr$!: Observable<number>;
@@ -36,7 +38,7 @@ export class SummaryComponent implements OnInit {
 
   displayedColumns = ['event', 'cals'];
 
-  constructor(private store: Store<StoreInterface>) {
+  constructor() {
     this.dataSource = new MatTableDataSource<SummaryInterface>([
       {
         event: 'Breakfast',
@@ -58,19 +60,23 @@ export class SummaryComponent implements OnInit {
       this.breakfast = data;
       this.refresh();
     });
+
     this.store.select(selectLunch).subscribe((data) => {
       this.lunch = data;
       this.refresh();
     });
+
     this.store.select(selectDinner).subscribe((data) => {
       this.dinner = data;
       this.refresh();
     });
+
     this.store.select(selectSnack).subscribe((data) => {
       this.snack = data;
       this.refresh();
     });
   }
+
   refresh() {
     this.dataSource.data = [
       {

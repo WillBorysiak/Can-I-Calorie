@@ -1,8 +1,7 @@
-import { capitalize } from 'src/app/utils/capitalize';
-import { Component, Input, OnInit } from '@angular/core';
-import { FoodInterface } from 'src/app/models/food.model';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
+import { FoodInterface } from 'src/app/models/food.model';
 import { StoreInterface } from 'src/app/models/store.model';
 import {
   generateBreakfast,
@@ -10,6 +9,7 @@ import {
   generateLunch,
   generateSnack,
 } from 'src/app/state/app.actions';
+import { capitalize } from 'src/app/utils/capitalize';
 
 @Component({
   selector: 'meal',
@@ -18,6 +18,8 @@ import {
   standalone: false,
 })
 export class MealComponent implements OnInit {
+  protected store = inject(Store<StoreInterface>);
+
   @Input() title!: string;
   @Input() placeholder!: string;
   titleCaptialized!: string;
@@ -28,7 +30,7 @@ export class MealComponent implements OnInit {
 
   displayedColumns = ['food', 'cals'];
 
-  constructor(private store: Store<StoreInterface>) {
+  constructor() {
     this.dataSource = new MatTableDataSource();
   }
 
@@ -48,8 +50,10 @@ export class MealComponent implements OnInit {
       food: capitalize(this.food),
       cals: this.cals,
     };
+
     this.dataSource.data.push(foodObj);
     this.dataSource._updateChangeSubscription();
+
     if (this.title === 'breakfast') {
       this.store.dispatch(generateBreakfast({ value: this.getTotalCals() }));
     }

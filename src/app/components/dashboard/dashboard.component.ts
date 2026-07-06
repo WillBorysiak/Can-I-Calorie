@@ -1,5 +1,5 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -9,7 +9,8 @@ import { map } from 'rxjs/operators';
   standalone: false,
 })
 export class DashboardComponent {
-  /** Based on the screen size, switch from standard to one column per row */
+  protected breakpointObserver: BreakpointObserver = inject(BreakpointObserver);
+
   cards = this.breakpointObserver
     .observe([Breakpoints.Medium, Breakpoints.Small, Breakpoints.XSmall])
     .pipe(
@@ -37,6 +38,4 @@ export class DashboardComponent {
         ];
       })
     );
-
-  constructor(private breakpointObserver: BreakpointObserver) {}
 }
